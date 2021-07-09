@@ -1,1 +1,1 @@
-# n-gons
+# create animated n-gons
