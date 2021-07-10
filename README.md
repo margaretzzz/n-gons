@@ -1,1 +1,1 @@
-# create animated n-gons
+# create animated polygons
