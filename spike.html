@@ -1,54 +1,47 @@
 <html>
-    <head>
-    <meta charset=utf-8 />
-    <title>Draw a n-spiked star</title>
-    </head>
+<head>
+<meta charset=utf-8 />
+<title>Draw a n-spiked star</title>
+</head>
 
-    <body>
+<body>
     <svg width = "200" height = "200">
         <polygon id="star" fill = "pink" >
 
-        
     </svg>
 
     <script > 
    
-    function rotate(radius,spikes) {
-        var points = ""
-        
-        var angle = 360/spikes*Math.PI/180
-        
-        var i = 0
-    
-        do {
-            var nextPointX = 100+radius*Math.cos(i*angle)
-            var nextPointY= 100-radius*Math.sin(i*angle)
-            points += nextPointX + "," + nextPointY + " "
-            //console.log("Point X" + (i+1) + ": " + nextPointX)
-            // console.log("Point Y" + (i+1) + ": " +nextPointY)
+        function rotatePoint(iA, radiusA, angleA) {
+            var pointsA
+            var nextPointX = 100+radiusA*Math.cos(iA*angleA)
+            var nextPointY= 100-radiusA*Math.sin(iA*angleA)
+            pointsA = nextPointX + "," + nextPointY + " "
+            return pointsA
+        }   
 
-            i++
+        function ngon(radius,spikes) {
+            var points = "" 
+            var angle = 360/spikes*Math.PI/180
+            var i = 0
+            
+            do {
+                points += rotatePoint(i, radius, angle)
+                i++
+            }
+            while (i<spikes) 
+            return points
         }
-        while (i<spikes) 
-        return points
-    }
-    var spikes = 1
-    setInterval(() => {
-        var val = rotate(40,spikes)
-        spikes += 1
-        var element = document.getElementById("star")
-        element.setAttribute("points", val)
-    }, 1000);
-
-
    
-    
-    
- 
+        var spikes = 1
+        setInterval(() => {
+            var val = ngon(40,spikes)
+            spikes += 1
+            var element = document.getElementById("star")
+            element.setAttribute("points", val)
+        }, 1000);
     
     </script>
-
-     
 
 </body>
 </html>
