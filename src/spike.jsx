@@ -36,7 +36,7 @@ function App() {
         {
             lst.map((l)=> {
                 return (
-                <div style = {{position: "absolute", top: Math.random()*1000, left: Math.random()*1000 }}>   
+                <div style = {{position: "absolute", top: 120*l, left: 120*l}}>   
                 <Canvas size = "200">
                     <Polygon n= {spikes} 
                         radius = {10*l}/>      
