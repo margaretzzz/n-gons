@@ -1,4 +1,4 @@
-import React, { Children } from "react"
+import React, { useEffect, useState } from "react"
 import ReactDom from "react-dom"
 
 function Canvas({children,size}) { 
@@ -13,29 +13,39 @@ function Polygon({n, radius}) {
             var nextPointX = 100+radius*Math.cos(i*angle)
             var nextPointY= 100-radius*Math.sin(i*angle)
             pointsA += nextPointX + "," + nextPointY + " "
-            //console.log("Point X" + (i+1) + ": " + nextPointX)
-            // console.log("Point Y" + (i+1) + ": " +nextPointY)
             i++
         }
         while (i<n) 
     
     return (<polygon id="star" 
         points = {pointsA}
-        fill = "pink"> </polygon>)
+        fill = "orange"> </polygon>)
 }
 
 function App() {
+    var [spikes,setSpikes] = useState(0)
+    useEffect(()=>{  
+        setInterval (() => {
+            setSpikes(value => value + 1)    
+        }, 1000)
+    }, [])
+    var lst =[1,2,3, 4,5, 6]
+    
     return (
-       <> <div>   
-            <Canvas size = "500">
-                <Polygon n= {6} radius = {50}/>      
-            </Canvas>
-        </div>
-        <div>
-            <Canvas size = "500">
-                <Polygon n= {4} radius = {50}/>      
-            </Canvas>
-        </div> </>
+        <div style = {{position: "relative", width: "1024px", height: "768px"}}> 
+        {
+            lst.map((l)=> {
+                return (
+                <div style = {{position: "absolute", top: Math.random()*1000, left: Math.random()*1000 }}>   
+                <Canvas size = "200">
+                    <Polygon n= {spikes} 
+                        radius = {10*l}/>      
+                </Canvas>
+                </div>
+                )
+            })            
+        }   
+        </div> 
     )
 }
 
