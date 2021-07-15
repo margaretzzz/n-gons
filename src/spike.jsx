@@ -1,8 +1,7 @@
 import React, { Children } from "react"
 import ReactDom from "react-dom"
 
-function Canvas({children,size}) {
-    
+function Canvas({children,size}) { 
     return (<svg width = {size} height = {size}> {children}</svg>);
 }
 
@@ -20,23 +19,21 @@ function Polygon({n, radius}) {
         }
         while (i<n) 
     
-        return (<polygon id="star" 
-            points = "pointsA"
-            fill = "pink"> </polygon>)
+    return (<polygon id="star" 
+        points = {pointsA}
+        fill = "pink"> </polygon>)
 }
-
-
 
 function App() {
     return (
        <> <div>   
             <Canvas size = "500">
-                <Polygon n= {6,50}/>      
+                <Polygon n= {6} radius = {50}/>      
             </Canvas>
         </div>
         <div>
             <Canvas size = "500">
-                <Polygon n= {4,50}/>      
+                <Polygon n= {4} radius = {50}/>      
             </Canvas>
         </div> </>
     )
