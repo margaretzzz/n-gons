@@ -4,9 +4,13 @@
   "description": "",
   "main": "src/spike.jsx",
   "browser": "src/spike.jsx",
+  
+  
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack serve --mode=development"
+    "start": "webpack serve --mode=development",
+    "debug": "node --inspect-brk anothertest.jsx",
+    "type": "module"
   },
   "repository": {
     "type": "git",
